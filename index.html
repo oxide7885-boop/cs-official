@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090711">
+<title>CS — Official</title>
+<style>
+:root{--bg:#090711;--panel:#141020;--panel2:#1c152b;--purple:#9b5cff;--pink:#d16bff;--text:#f5f0ff;--muted:#a99bbd;--line:#302342;--gold:#ffc96b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#38205c 0,transparent 45%),var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#0b0812eF;border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.wrap{max-width:1080px;margin:auto;padding:0 18px}.top{height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:1000;letter-spacing:1.5px;font-size:23px}.brand b{color:var(--purple)}nav{display:flex;gap:7px;flex-wrap:wrap}
+button,.navbtn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:11px;padding:10px 13px;font-weight:750;cursor:pointer}
+button:hover,.navbtn.active{border-color:var(--purple);background:#2a1b40}.primary{background:linear-gradient(120deg,#7539d8,#ad59ff);border:0}.danger{border-color:#713044;color:#ff9eae}
+.hero{padding:54px 0 28px}.eyebrow{color:#c49aff;font-size:12px;font-weight:900;letter-spacing:3px}.hero h1{font-size:clamp(38px,8vw,72px);line-height:.98;margin:13px 0}.hero h1 span{color:var(--purple);text-shadow:0 0 30px #9b5cff55}.hero p{color:var(--muted);max-width:600px;line-height:1.6}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0}.stat,.card,.panel{background:linear-gradient(145deg,#1a1328,#100c19);border:1px solid var(--line);border-radius:18px}.stat{padding:17px}.stat strong{display:block;font-size:25px}.stat small{color:var(--muted)}
+section{padding:20px 0 35px}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}.sectionhead h2{margin:0;font-size:25px}.sectionhead p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}.card{padding:17px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:#9b5cff16;right:-45px;top:-50px}.playerhead{display:flex;align-items:center;gap:12px;position:relative}.avatar{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#552c91,#b45dff);display:grid;place-items:center;font-size:22px;font-weight:950;border:1px solid #c39aff66;flex-shrink:0}.playername{font-size:18px;font-weight:900;overflow-wrap:anywhere}.role{font-size:11px;color:#d7baff;margin-top:4px;font-weight:800;letter-spacing:.8px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.pill{font-size:11px;color:#d9c7f2;border:1px solid #493365;background:#251a36;padding:6px 9px;border-radius:20px}.xp{height:7px;background:#30243e;border-radius:9px;overflow:hidden}.xp span{display:block;height:100%;background:linear-gradient(90deg,#8144dc,#d16bff);border-radius:9px}.muted{color:var(--muted);font-size:13px}.cardactions{display:flex;gap:8px;margin-top:14px}.cardactions button{flex:1;font-size:12px}
+.rankrow{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:12px;padding:13px;border-bottom:1px solid var(--line)}.rankrow:last-child{border:0}.ranknum{font-weight:1000;color:var(--gold);font-size:18px}.rankname{font-weight:850}.points{color:#d5b5ff;font-weight:900}
+.achievements{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}.ach{padding:15px;border-radius:15px;background:#171122;border:1px solid var(--line)}.ach .emoji{font-size:26px}.ach b{display:block;margin:8px 0 3px}.ach small{color:var(--muted)}
+.panel{padding:18px;margin-top:15px}.hidden{display:none!important}label{display:block;color:#cbb9df;font-size:12px;font-weight:800;margin:11px 0 6px}input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#0d0915;color:var(--text);font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple)}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.formgrid .full{grid-column:1/-1}.formbuttons{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:25px 0 35px;color:var(--muted);font-size:12px;text-align:center}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#241638;border:1px solid var(--purple);padding:12px 18px;border-radius:12px;z-index:10;display:none;max-width:90%;text-align:center}
+@media(max-width:600px){.top{height:auto;min-height:65px;align-items:flex-start;padding-top:12px;padding-bottom:12px;flex-direction:column}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:20px}.hero{padding-top:38px}.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}.sectionhead{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap top"><div class="brand">CS <b>—</b> OFFICIAL</div><nav>
+<button class="navbtn active" data-go="players">Игроки</button><button class="navbtn" data-go="rating">Рейтинг</button><button class="navbtn" data-go="achievements">Награды</button><button class="navbtn" data-go="admin">Админ-панель</button>
+</nav></div></header>
+<main class="wrap">
+<div class="hero"><div class="eyebrow">ОФИЦИАЛЬНЫЙ САЙТ КЛАНА</div><h1>WE ARE<br><span>CS.</span></h1><p>Clan Stream — команда, где каждый игрок создаёт свою историю. Профили, достижения и рейтинг участников в одном месте.</p>
+<div class="stats"><div class="stat"><strong id="total">2</strong><small>Игрока в составе</small></div><div class="stat"><strong id="leader">1</strong><small>Лидер команды</small></div><div class="stat"><strong>∞</strong><small>Цель — победа</small></div></div>
+</div>
+<section id="players"><div class="sectionhead"><div><h2>Игроки клана</h2><p>Участники CS — Official</p></div><button class="primary" onclick="go('admin')">＋ Добавить игрока</button></div><div class="grid" id="playerGrid"></div></section>
+<section id="rating"><div class="sectionhead"><div><h2>Рейтинг игроков</h2><p>Очки и позиции участников</p></div></div><div class="panel" id="ratingList"></div></section>
+<section id="achievements"><div class="sectionhead"><div><h2>Достижения</h2><p>Особые отметки участников</p></div></div><div class="achievements">
+<div class="ach"><div class="emoji">👑</div><b>Основатель</b><small>Создатель и лидер CS</small></div>
+<div class="ach"><div class="emoji">⚡</div><b>Правая рука</b><small>Помогает управлять кланом</small></div>
+<div class="ach"><div class="emoji">🏆</div><b>Топ игрок</b><small>Набери 100 очков рейтинга</small></div>
+<div class="ach"><div class="emoji">🔥</div><b>Активист</b><small>Будь активным участником</small></div>
+</div></section>
+<section id="admin"><div class="sectionhead"><div><h2>Админ-панель</h2><p>Управление составом и профилями</p></div><span class="pill">DEMO MODE</span></div>
+<div class="panel"><p class="muted">Это демонстрационная админ-панель: изменения сохраняются в этом браузере на этом устройстве. Для настоящего общего сайта с защищённым входом понадобится сервер и база данных.</p>
+<div class="formgrid">
+<div><label>Игровой ник</label><input id="fName" placeholder="Например, player_cs"></div>
+<div><label>Роль</label><select id="fRole"><option>Участник</option><option>Лидер</option><option>Правая рука</option><option>Модератор</option><option>Элитный игрок</option></select></div>
+<div><label>Очки рейтинга</label><input id="fPoints" type="number" min="0" value="0"></div>
+<div><label>Достижение</label><select id="fAch"><option>Новичок</option><option>Основатель</option><option>Правая рука</option><option>Топ игрок</option><option>Активист</option></select></div>
+<div class="full"><label>Описание профиля</label><textarea id="fBio" rows="2" placeholder="Немного о игроке..."></textarea></div>
+</div><div class="formbuttons"><button class="primary" onclick="savePlayer()">Сохранить игрока</button><button onclick="clearForm()">Очистить</button></div><input id="editId" type="hidden">
+<div style="height:1px;background:var(--line);margin:20px 0"></div><b>Управление участниками</b><div id="adminList" style="margin-top:10px"></div>
+</div></section>
+</main>
+<footer><b>CS — OFFICIAL</b><br>CLAN STREAM · СДЕЛАНО ДЛЯ ПОБЕДЫ</footer><div class="toast" id="toast"></div>
+<script>
+const defaults=[
+{id:1,name:"stream_lider",role:"Лидер",points:250,ach:"Основатель",bio:"Основатель клана Clan Stream."},
+{id:2,name:"stream_zokie",role:"Правая рука",points:180,ach:"Правая рука",bio:"Правая рука лидера. Вместе строим CS."}
+];
+let players;
+try{players=JSON.parse(localStorage.getItem("cs_official_players"))||defaults}catch(e){players=defaults}
+function persist(){localStorage.setItem("cs_official_players",JSON.stringify(players));render()}
+function toast(s){let t=document.getElementById("toast");t.textContent=s;t.style.display="block";setTimeout(()=>t.style.display="none",2300)}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.go===id))}
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>go(b.dataset.go));
+function initials(n){return n.replace(/[^a-zA-Zа-яА-Я0-9]/g,"").slice(0,2).toUpperCase()||"CS"}
+function render(){
+document.getElementById("total").textContent=players.length;document.getElementById("leader").textContent=players.filter(p=>p.role==="Лидер").length;
+document.getElementById("playerGrid").innerHTML=players.map(p=>`<article class="card"><div class="playerhead"><div class="avatar">${initials(p.name)}</div><div><div class="playername">${esc(p.name)}</div><div class="role">${esc(p.role.toUpperCase())}</div></div></div><div class="meta"><span class="pill">🏅 ${esc(p.ach)}</span><span class="pill">⭐ ${Number(p.points)||0} очков</span></div><p class="muted">${esc(p.bio||"Участник клана CS.")}</p><div class="xp"><span style="width:${Math.min(100,Math.max(5,(Number(p.points)||0)/5))}%"></span></div><div class="cardactions"><button onclick="profile(${p.id})">Профиль</button></div></article>`).join("")||'<p class="muted">Пока нет игроков. Добавь первого участника в админ-панели.</p>';
+let sorted=[...players].sort((a,b)=>b.points-a.points);document.getElementById("ratingList").innerHTML=sorted.map((p,i)=>`<div class="rankrow"><div class="ranknum">#${i+1}</div><div><div class="rankname">${esc(p.name)}</div><div class="muted">${esc(p.role)}</div></div><div class="points">${Number(p.points)||0} XP</div></div>`).join("")||'<p class="muted">Рейтинг пока пуст.</p>';
+document.getElementById("adminList").innerHTML=players.map(p=>`<div class="rankrow"><div class="avatar" style="width:38px;height:38px;border-radius:10px;font-size:14px">${initials(p.name)}</div><div><div class="rankname">${esc(p.name)}</div><div class="muted">${esc(p.role)} · ${p.points} очков</div></div><div style="display:flex;gap:6px"><button onclick="editPlayer(${p.id})">Изменить</button><button class="danger" onclick="removePlayer(${p.id})">×</button></div></div>`).join("")||'<p class="muted">Нет участников.</p>';
+}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function profile(id){let p=players.find(x=>x.id===id);if(p)alert("ПРОФИЛЬ ИГРОКА\\n\\n"+p.name+"\\nРоль: "+p.role+"\\nОчки: "+p.points+"\\nДостижение: "+p.ach+"\\n\\n"+(p.bio||""))}
+function savePlayer(){let name=document.getElementById("fName").value.trim();if(!name){toast("Введи ник игрока");return}let id=Number(document.getElementById("editId").value);let p={id:id||Date.now(),name,role:document.getElementById("fRole").value,points:Math.max(0,Number(document.getElementById("fPoints").value)||0),ach:document.getElementById("fAch").value,bio:document.getElementById("fBio").value.trim()};if(id){players=players.map(x=>x.id===id?p:x)}else{if(players.some(x=>x.name.toLowerCase()===name.toLowerCase())){toast("Такой ник уже есть");return}players.push(p)}persist();clearForm();toast("Профиль сохранён")}
+function editPlayer(id){let p=players.find(x=>x.id===id);if(!p)return;document.getElementById("editId").value=p.id;document.getElementById("fName").value=p.name;document.getElementById("fRole").value=p.role;document.getElementById("fPoints").value=p.points;document.getElementById("fAch").value=p.ach;document.getElementById("fBio").value=p.bio||"";go("admin")}
+function removePlayer(id){let p=players.find(x=>x.id===id);if(p&&confirm("Удалить игрока "+p.name+"?")){players=players.filter(x=>x.id!==id);persist();toast("Игрок удалён")}}
+function clearForm(){["fName","fBio"].forEach(id=>document.getElementById(id).value="");document.getElementById("fPoints").value=0;document.getElementById("editId").value="";document.getElementById("fRole").value="Участник";document.getElementById("fAch").value="Новичок"}
+render();
+</script></body></html>
